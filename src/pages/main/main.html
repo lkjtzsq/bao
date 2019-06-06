@@ -1,0 +1,78 @@
+<!-- 这里还是一个标准的BUI页面 -->
+<style type="text/css">
+    
+    .welcome{
+      text-align:center;
+    }
+    .welcome h1{
+      font-size: 30px;
+      font-weight: bold;
+      color: #ea4800;
+      margin-bottom: 8px;
+    }
+    .welcome-header img{margin-top:15px;}
+    .bui-router-item{background:#fff;}
+    .welcome-txt{
+      margin-bottom: 35px;
+      font-size: 14px;
+      color: #000;
+      font-family: "宋体";
+    }
+    .bui-page>.main, .bui-page>main {background: #fff;}
+    .yyitem_list{overflow: hidden;margin:0 30px;}
+    .yyitem_list li{float:left;width:50%;text-align:center;}
+    .yyitem_list li h3{    
+      margin: 5px 0 20px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .yyitem_list li h3 a{color:#d3a705;}
+    #btn{
+      width: 97px;
+      height: 30px;
+      display: block;
+      margin: 0 auto;
+      background: #ea4800;
+      line-height: 27px;
+      text-align: center;
+      font-size: 17px;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+</style>
+<div class="bui-page">
+  <header class="welcome">
+    <div class="welcome-header">
+      <img src="../../images/bao_logo.png">
+      <h1>预约平台</h1>
+    </div>
+    <div class="welcome-txt">欢迎<span class="username">李杰</span>！</div>
+  </header>
+  <main>
+    <ul class="yyitem_list">
+      <li>
+        <a href=""><img src="../../images/yy_01.png"></a>
+        <h3><a href="">会议室预约</a></h3>
+      </li>
+       <li>
+        <a href=""><img src="../../images/yy_02.png"></a>
+        <h3><a href="">演播室预约</a></h3>
+      </li>
+       <li>
+        <a href=""><img src="../../images/yy_03.png"></a>
+        <h3><a href="">公共剪辑电脑预约</a></h3>
+      </li>
+       <li>
+        <a href=""><img src="../../images/yy_04.png"></a>
+        <h3><a href="">拍摄设备预约</a></h3>
+      </li>
+    </ul>
+    <a id="btn" href="#">我的预约</a>
+    <!-- 中间内容 -->
+  </main>
+  <footer>
+    <!-- 底部内容 -->
+  </footer>
+</div>
