@@ -1,45 +1,87 @@
+<style type="text/css">
+    .login{
+           background: #e6f3e6;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    padding-top: 73px;
+    padding-bottom: 10px;
+    }
+     .login-logo{
+        position: absolute;
+        left:50%;
+        margin-left: -60px;
+        top:-60px;
+    }
+    .login-txt{color:#57b83e;font-size: 18px;font-weight: bold;text-align: center;margin-bottom: 15px;}
+    .login-cr{position: relative;}
+    .input_group{height:42px;line-height: 42px;width:100%;display: flex;background: #ebf6f1;margin-bottom: 3px;}
+    .input_group input{flex: 1;border: none;font-size: 16px;background: #ebf6f1;padding: 0 5px;box-sizing: border-box;}
+    .people{background: #fff url(../../images/people.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
+    .tel{background: #fff url(../../images/tel.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
+    .input_big{height:42px;line-height: 42px;width:100%;display: flex;background: #fff;margin-bottom: 3px;}
+    .input_big input{flex: 1;border: none;font-size: 16px;background: #fff;padding: 0 5px;box-sizing: border-box;}
+    .yzm_pic{width: 85px;height:30px;background: red;margin:6px;}
+    .input_big select{border: none;
+    width: 100%;
+    background: #fff;}
+    #login_submit{
+               width: 97px;
+    height: 30px;
+    display: block;
+    background: #b2daaf;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 700;
+    border: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -49px;
+    bottom: -55px;
+    }
+    .login-box{
+      padding: 0 30px;
+      height:100%;
+      background: -webkit-linear-gradient(#c6e6ee, #edf1d2); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(#c6e6ee", #edf1d2); /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(#c6e6ee, #edf1d2); /* Firefox 3.6 - 15 */
+      background: linear-gradient(#c6e6ee, #edf1d2); /* 标准的语法 */
+    }
 
-<div class="bui-page register-page">
-    <header class="bui-bar">
-        <div class="bui-bar">
-            <div class="bui-bar-left">
-                <a class="bui-btn btn-back"><i class="icon-back"></i></a>
+</style>
+<div class="login-box">
+   <div class="login-cr">
+     <div class="login">
+        <img class="login-logo" src="../../images/bao_logo.png">
+        <h1 class="login-txt">欢迎来到青小豹预约平台</h1>
+        <form>
+            <div class="input_group">
+                <label for="uname"><i class="people"></i></label>
+                <input type="text" name="uname" id="uname" placeholder="姓名">
             </div>
-            <div class="bui-bar-main">注册</div>
-            <div class="bui-bar-right">
+             <div class="input_group">
+                <label for="utel"><i class="tel"></i></label>
+                <input type="number" name="utel" id="utel" placeholder="手机">
             </div>
-        </div>
-    </header>
-    <main>
-        <div class="section-title">请填写信息</div>
-        <ul class="bui-list">
-            <li class="bui-btn bui-box clearactive">
-                <label class="bui-label" for="phonenumber">手机号:</label>
-                <div class="span1">
-                    <div class="bui-input user-input">
-                        <input id="phonenumber" type="number" value="" placeholder="请输入手机号">
-                    </div>
-                </div>
-            </li>
-            <li class="bui-btn bui-box clearactive">
-                <label class="bui-label" for="password">密码:</label>
-                <div class="span1">
-                    <div id="passwordInput" class="bui-input">
-                        <input id="password" type="password" placeholder="请输入密码">
-                    </div>
-                </div>
-            </li>
-      			<li class="bui-btn bui-box clearactive">
-      				<label class="bui-label">验证码:</label>
-      				<div class="span1">
-      					<input type="text" class="bui-input" value="" placeholder="请输入验证码" maxlength="4">
-      				</div>
-      				<div class="bui-btn primary-reverse mini ring" id="btnSend">发送验证码</div>
-      			</li>
-    		</ul>
-        <div class="container-xy">
-          <div class="bui-btn round primary" href="pages/msg/msg.html">注册</div>
-        </div>
-    </main>
-
+            <div class="input_big">
+                <input type="text" name="yzm" placeholder="验证码">
+                <span class="yzm_pic"></span>
+            </div>
+            <div class="input_big">
+                <select>
+                    <option>部门</option>
+                    <option>技术部</option>
+                    <option>视频部</option>
+                    <option>设计部</option>
+                </select>
+            </div>
+            <div class="input_big">
+                <input type="text" name="department">
+            </div>
+            <button id="login_submit">登 录</button>
+        </form>
+    </div>
+   </div>
 </div>

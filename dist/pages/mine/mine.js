@@ -7,13 +7,13 @@
  */
 loader.define(function () {
 
-    var pageview = {};
+  var pageview = {};
 
-    pageview.init = function () {};
+  pageview.init = function () {};
 
-    // 初始化
-    pageview.init();
+  // 初始化
+  pageview.init();
 
-    // 输出模块
-    return pageview;
+  // 输出模块
+  return pageview;
 });

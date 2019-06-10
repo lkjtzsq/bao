@@ -1,48 +1,25 @@
-"use strict";
+'use strict';
 
+/**
+ * 注册模板,包含验证码倒计时及手机号简单验证
+ * 默认模块名: pages/register/register
+ * @return {[object]}  [ 返回一个对象 ]
+ */
 loader.define(function () {
-
-    // 显示时间
-    $("#show5").on("click", function (argument) {
-
-        // 弹出的时候,也不要显示对应的时分秒
-        uiPickerdate.formatValue("hh:mm:ss");
-        // cols 在初始化的时候设定, 不使用调用方法的方式
-        // uiPickerdate.cols({
-        //     year: "none",
-        //     month: "none",
-        //     date: "none",
-        // })
+    $(function () {
+        //初始化配置参数      
+        $('#demo').mobiscroll().calendar({
+            lang: 'zh' //使用语言
+        });
+        var year = new Date().getFullYear();
+        var month = new Date().getMonth() + 1;
+        var day = new Date().getDate();
+        $('#demo').val(year + '/' + month + '/' + day);
     });
-
-    // 自定义取值示例,分钟数大于60的索引不能
-    var arrs = ['07:00-07:30', '07:30-08:00', '08:00-08:30', '08:30-09:00', '09:00-09:30', '09:30-10:00', '10:00-10:30'];
-    var input2 = $("#datepicker_input2");
-    var uiPickerdate2 = bui.pickerdate({
-        handle: "#datepicker_input2",
-        // input 显示的日期格式
-        formatValue: "mm",
-        cols: {
-            year: "none",
-            month: "none",
-            date: "none",
-            hour: "none",
-            minute: {
-                values: [0, 1, 2, 3, 4, 5],
-                displayValues: arrs
-            },
-            second: 'none'
-        },
-        onChange: function onChange(value) {
-            var index = parseInt(value);
-            var val = arrs[index];
-            input2.val(val);
-        },
-        callback: function callback(e) {
-            console.log(e.target);
-            console.log(this.value());
-        },
-        // 如果不需要按钮,设置为空
-        buttons: null
+    $('.green-back').click(function () {
+        bui.back();
+    });
+    $('.mine').click(function () {
+        router.load({ url: "pages/mine/mine.html", param: {} });
     });
 });

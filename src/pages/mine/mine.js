@@ -10,7 +10,7 @@ loader.define(function(){
     pageview.init = function () {
      
     }
-
+   
     // 初始化
     pageview.init();
 

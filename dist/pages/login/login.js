@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * 注册模板,包含验证码倒计时及手机号简单验证
@@ -19,7 +19,9 @@ loader.define(function () {
                 this.empty();
             }
         });
-
+        $().ready(function () {
+            $('.login').css('top', ($(window).height() - $('.login').height()) / 2 + 'px');
+        });
         // 密码显示或者隐藏
         var password = bui.input({
             id: "#passwordInput",
