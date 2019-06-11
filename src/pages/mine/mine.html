@@ -1,66 +1,120 @@
  <style type="text/css">
- 	.mine-item{padding:10px;border-bottom: 1px solid #ccc;}
+ 	.mine-item{    margin: 0 10px 20px 10px;
+    overflow: hidden;
+    background: #f7f7f7;
+    padding: 10px;
+    box-shadow: 0 3px 10px 0 #ccc;position: relative;}
  	.txt-center{text-align: center;}
+  .green-back{       background: url(../../images/back_green.png);
+    width: 39px;
+    height: 39px;
+    display: inline-block;
+    top: 12px;}
+    .mine-box{overflow: scroll;}
  </style>
- <header class="bui-bar">
-        <div class="bui-bar">
-            <div class="bui-bar-left">
-                <a class="bui-btn btn-back"><i class="icon-back"></i></a>
+ <div class="bui-box" style="    background: #fff!important;
+    height: 60px;
+    line-height: 60px;padding:0 20px;">
+            <div class="span1">
+                <i class="green-back"></i>
             </div>
-            <div class="bui-bar-main">我的预约</div>
-            <div class="bui-bar-right">
+            <div class="span1" style="text-align:center;"><span style="    background: #57b83e;
+    width: 85px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;">我的预约</span></div>
+            <div class="span1" style="text-align:right;">
+              
             </div>
         </div>
-</header>
-<main>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-	<div class="mine-item">
-		<h1 class="mine-title">小厨会议室</h1>
-		<p class="mine-cr">状态：<span>已结束</span></p>
-		<p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
-		<p class="mine-cr">地点：<span>中青大厦</span></p>
-		<p class="mine-cr txt-center"><a href="#">详情</a></p>
-	</div>
-</main>
-ui-page
+        <div class="mine-list">
+          <a href="#" class="on">会议室</a>
+          <a href="#">演播室</a>
+          <a href="#">公共剪辑电脑</a>
+          <a href="#">拍摄设备</a>
+        </div>
+        <style type="text/css">
+          .mine-list{text-align: center;margin:10px 0 20px;font-size: 12px;}
+          .mine-list a{background:#57b83e;color: #fff;height:30px;padding: 0 8px;display: inline-block;line-height: 30px;margin:0 5px;border-radius: 4px;}
+          .mine-list a.on{background: #ccc;}
+          .mine-title{    font-size: 16px;
+    margin-bottom: 8px;color: #57b83e;}
+          .mine-cr{font-size: 14px;color: #57b83e;}
+          .mine-cr.used{color: #f08401;}
+          .mine-btn-cr{    position: absolute;
+    right: 10px;
+    top: 11px;
+    font-size: 14px;}
+    .mine-btn-cr a{color:#57b83e;margin-left: 10px;}
+    .mine-title i{    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: -4px;
+    margin-right: 6px;}
+    .icon1{background: url(../../images/icon1.png);}
+    .icon2{background: url(../../images/icon2.png);}
+    .icon3{background: url(../../images/icon3.png);}
+    .icon4{background: url(../../images/icon4.png);}
+        </style>
+<div class="mine-container" style="overflow:scroll;">
+  <div class="mine-box">
+    <div class="mine-item">
+    <h1 class="mine-title"><i class="icon1"></i>小厨会议室</h1>
+    <p class="mine-cr used">状态：<span>已预约</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+    <p class="mine-btn-cr"><a href="#">延期</a><a href="#">取消</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title"><i class="icon2"></i>小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+     <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title"><i class="icon3"></i>小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+     <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title"><i class="icon4"></i>小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+     <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title">小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+     <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title">小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+    <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  <div class="mine-item">
+    <h1 class="mine-title">小厨会议室</h1>
+    <p class="mine-cr">状态：<span>已结束</span></p>
+    <p class="mine-cr">时间：<span>2019-5-31 10:30-11:30</span></p>
+    <p class="mine-cr">地点：<span>中青大厦</span></p>
+     <p class="mine-btn-cr"><a href="#">详情</a></p>
+  </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $().ready(function(){
+    $('.mine-container').height($(window).height()-120);
+  });
+</script>

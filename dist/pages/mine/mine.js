@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * 注册模板,包含验证码倒计时及手机号简单验证
@@ -10,7 +10,9 @@ loader.define(function () {
   var pageview = {};
 
   pageview.init = function () {};
-
+  $('.green-back').click(function () {
+    bui.back();
+  });
   // 初始化
   pageview.init();
 

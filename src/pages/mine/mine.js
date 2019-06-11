@@ -10,7 +10,9 @@ loader.define(function(){
     pageview.init = function () {
      
     }
-   
+   $('.green-back').click(function(){
+    	bui.back();
+    });
     // 初始化
     pageview.init();
 
