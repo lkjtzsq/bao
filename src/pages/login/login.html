@@ -16,12 +16,18 @@
     .login-txt{color:#57b83e;font-size: 18px;font-weight: bold;text-align: center;margin-bottom: 15px;}
     .login-cr{position: relative;}
     .input_group{height:42px;line-height: 42px;width:100%;display: flex;background: #ebf6f1;margin-bottom: 3px;}
-    .input_group input{flex: 1;border: none;font-size: 16px;background: #ebf6f1;padding: 0 5px;box-sizing: border-box;}
+    .input_group input{flex: 1;border: none;font-size: 16px;background: #fff;padding: 0 5px;box-sizing: border-box;}
     .people{background: #fff url(../../images/people.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
     .tel{background: #fff url(../../images/tel.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
     .input_big{height:42px;line-height: 42px;width:100%;display: flex;background: #fff;margin-bottom: 3px;}
-    .input_big input{flex: 1;border: none;font-size: 16px;background: #fff;padding: 0 5px;box-sizing: border-box;}
-    .yzm_pic{width: 85px;height:30px;background: red;margin:6px;}
+    .input_big input{    flex: 1;
+    border: none;
+    font-size: 16px;
+    background: #fff;
+    padding: 0 13px 0 13px;
+    box-sizing: border-box;
+    width: 0px;}
+    .yzm_pic{width: 85px;height:30px;background: red;margin:6px 10px 0 0;}
     .input_big select{border: none;
     width: 100%;
     background: #fff;}
@@ -69,7 +75,7 @@
                 <input type="text" name="yzm" placeholder="验证码">
                 <span class="yzm_pic"></span>
             </div>
-            <div class="input_big">
+            <div class="input_big" style="padding:0 10px;">
                 <select>
                     <option>部门</option>
                     <option>技术部</option>
@@ -78,7 +84,7 @@
                 </select>
             </div>
             <div class="input_big">
-                <input type="text" name="department">
+                <input type="text" name="department" style="padding: 0 13px;">
             </div>
             <button id="login_submit">登 录</button>
         </form>
