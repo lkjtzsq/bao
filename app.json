@@ -13,8 +13,8 @@
     "!src/preview.png"
   ],
   "proxy": {
-    "/demo": {
-      "target": "http://www.easybui.com",
+    "/api": {
+      "target": "http://qxb.test.com/",
       "changeOrigin": true,
       "ssl": false
     }
