@@ -4,7 +4,10 @@
  * @return {[object]}  [ 返回一个对象 ]
  */
 loader.define(function(){
-
+    $().ready(function(){
+          $('.login').css('top',($(window).height()-$('.login').height())/2-40+'px');
+    });
+    
     var pageview = {};
 
     pageview.init = function () {
@@ -17,9 +20,7 @@ loader.define(function(){
               this.empty();
           }
       })
-      $().ready(function(){
-        $('.login').css('top',($(window).height()-$('.login').height())/2+'px');
-      });
+
       // 密码显示或者隐藏
       var password = bui.input({
               id: "#passwordInput",

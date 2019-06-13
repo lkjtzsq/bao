@@ -1,4 +1,4 @@
-<style>.login{background:#e6f3e6;border-radius:10px;position:absolute;width:100%;padding-top:73px;padding-bottom:10px}.login-logo{position:absolute;left:50%;margin-left:-60px;top:-60px}.login-txt{color:#57b83e;font-size:18px;font-weight:700;text-align:center;margin-bottom:15px}.login-cr{position:relative}.input_group{height:42px;line-height:42px;width:100%;display:flex;background:#ebf6f1;margin-bottom:3px}.input_group input{flex:1;border:none;font-size:16px;background:#fff;padding:0 5px;box-sizing:border-box}.people{background:#fff url(images/people.png) center center no-repeat;width:42px;height:42px;display:inline-block}.tel{background:#fff url(images/tel.png) center center no-repeat;width:42px;height:42px;display:inline-block}.input_big{height:42px;line-height:42px;width:100%;display:flex;background:#fff;margin-bottom:3px}.input_big input{flex:1;border:none;font-size:16px;background:#fff;padding:0 13px 0 13px;box-sizing:border-box;width:0}.yzm_pic{width:85px;height:30px;background:red;margin:6px 10px 0 0}.input_big select{border:none;width:100%;background:#fff}#login_submit{width:97px;height:30px;display:block;background:#b2daaf;text-align:center;font-size:17px;color:#fff;border-radius:5px;font-weight:700;border:none;position:absolute;left:50%;margin-left:-49px;bottom:-55px}.login-box{padding:0 30px;height:100%;background:-webkit-linear-gradient(#c6e6ee,#edf1d2);background:-o-linear-gradient(#c6e6ee", #edf1d2); /* Opera 11.1 - 12 */
+<style>.login{background:#e6f3e6;border-radius:10px;position:absolute;width:100%;padding-top:73px;padding-bottom:10px}.login-logo{position:absolute;left:50%;margin-left:-60px;top:-60px}.login-txt{color:#57b83e;font-size:18px;font-weight:700;text-align:center;margin-bottom:15px}.login-cr{position:relative}.input_group{height:42px;line-height:42px;width:100%;display:flex;background:#ebf6f1;margin-bottom:3px}.input_group input{flex:1;border:none;font-size:16px;background:#fff;padding:0 5px;box-sizing:border-box}.people{background:#fff url(images/people.png) center center no-repeat;width:42px;height:42px;display:inline-block}.tel{background:#fff url(images/tel.png) center center no-repeat;width:42px;height:42px;display:inline-block}.input_big{height:42px;line-height:42px;width:100%;display:flex;background:#fff;margin-bottom:3px;position:relative}.input_big input{flex:1;border:none;font-size:16px;background:#fff;padding:0 13px 0 13px;box-sizing:border-box;width:0}.yzm_pic{width:85px;height:30px;background:red;margin:6px 10px 0 0}.input_big select{border:none;width:100%;background:#fff}#login_submit{width:97px;height:30px;display:block;background:#b2daaf;text-align:center;font-size:17px;color:#fff;border-radius:5px;font-weight:700;border:none;position:absolute;left:50%;margin-left:-49px;bottom:-55px}.login-box{padding:0 30px;height:100%;background:-webkit-linear-gradient(#c6e6ee,#edf1d2);background:-o-linear-gradient(#c6e6ee", #edf1d2); /* Opera 11.1 - 12 */
       background: -moz-linear-gradient(#c6e6ee, #edf1d2); /* Firefox 3.6 - 15 */
       background: linear-gradient(#c6e6ee, #edf1d2); /* 标准的语法 */}</style>
 <div class="login-box">
@@ -13,11 +13,15 @@
             </div>
              <div class="input_group">
                 <label for="utel"><i class="tel"></i></label>
-                <input type="number" name="utel" id="utel" placeholder="手机">
+                <input type="number" name="utel" id="utel" placeholder="手机" maxlength="11">
             </div>
             <div class="input_big">
-                <input type="text" name="yzm" placeholder="验证码">
+                <input type="text" name="yzm" placeholder="图片验证码">
                 <span class="yzm_pic"></span>
+            </div>
+            <div class="input_big">
+                 <input type="text" name="yzm" placeholder="手机验证码" maxlength="4">
+                <span class="bui-btn primary-reverse mini ring" id="btnSend" style="height:27px;position:absolute;top:8px;right:10px">发送验证码</span>
             </div>
             <div class="input_big" style="padding:0 10px">
                 <select>

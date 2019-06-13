@@ -47,24 +47,42 @@ loader.define(function () {
             $(this).hide();
             $('.view-pic-bg').hide();
         });
-        // ajax请求
-        var apiUrl = "";
-        bui.ajax({
-            url: apiUrl + "api/meeting",
-            type: "POST"
-        }).then(function (data) {
-            console.log(data.data.data);
-            var data = data.data.data;
-            var str = '';
-            $(data).each(function (i, v) {
-                var name = v.name;
-                var meeting_desc = v.meeting_desc;
-                var pnumber = v.pnumber;
-                var address = v.address;
-                var thumbnail = v.thumbnail[0] || "/images/pic-default.png";
-                str += '<div class="meeting-item"><div class="meeting-room"><div class="meeting-left"><h1 class="meeting-title">' + v.name + '</h1><p class="meeting-cr p1">' + v.devices + '</p><p class="meeting-cr p2">' + v.pnumber + '人</p><p class="meeting-cr p3">' + v.address + '</p></div><div class="meeting-right"><img src="' + v.thumbnail + '"></div></div><div class="meeting-progress"><div class="progress-bar"><span></span></div><div class="progress-count"><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span></div></div></div>';
+        // 虚拟storage
+        var storage = bui.storage();
+        storage.set("token", "2bc4bc9fcb24b2903d61e7b7921409d3");
+        function getList() {
+            // ajax请求
+            var apiUrl = "";
+            var curDate = new Date();
+            var year = curDate.getFullYear();
+            var month = curDate.getMonth() + 1;
+            var day = curDate.getDate();
+            var date = year + '-' + month + '-' + day;
+            // console.log(date);
+            bui.ajax({
+                url: apiUrl + "api/meeting",
+                type: "get",
+                data: {
+                    "date": date,
+                    "token": "2bc4bc9fcb24b2903d61e7b7921409d3"
+                }
+            }).then(function (data) {
+                console.log(data);
+                var data = data.data.data;
+                var str = '';
+                $(data).each(function (i, v) {
+                    var name = v.name;
+                    var meeting_desc = v.meeting_desc;
+                    var pnumber = v.pnumber;
+                    var address = v.address;
+                    var thumbnail = v.thumbnail[0] || "/images/pic-default.png";
+                    str += '<div class="meeting-item"><div class="meeting-room"><div class="meeting-left"><h1 class="meeting-title">' + v.name + '</h1><p class="meeting-cr p1">' + v.devices + '</p><p class="meeting-cr p2">' + v.pnumber + '人</p><p class="meeting-cr p3">' + v.address + '</p></div><div class="meeting-right"><img src="' + v.thumbnail + '"></div></div><div class="meeting-progress"><div class="progress-bar"><span></span></div><div class="progress-count"><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span></div></div></div>';
+                });
+                $(str).appendTo($('.meeting-contain'));
+            }, function (err) {
+                console.log(err);
             });
-            $(str).appendTo($('main'));
-        });
+        }
+        getList();
     });
 });

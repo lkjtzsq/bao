@@ -19,7 +19,7 @@
     .input_group input{flex: 1;border: none;font-size: 16px;background: #fff;padding: 0 5px;box-sizing: border-box;}
     .people{background: #fff url(./images/people.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
     .tel{background: #fff url(./images/tel.png) center center no-repeat;width:42px;height:42px;display: inline-block;}
-    .input_big{height:42px;line-height: 42px;width:100%;display: flex;background: #fff;margin-bottom: 3px;}
+    .input_big{height:42px;line-height: 42px;width:100%;display: flex;background: #fff;margin-bottom: 3px;position: relative;}
     .input_big input{    flex: 1;
     border: none;
     font-size: 16px;
@@ -69,11 +69,15 @@
             </div>
              <div class="input_group">
                 <label for="utel"><i class="tel"></i></label>
-                <input type="number" name="utel" id="utel" placeholder="手机">
+                <input type="number" name="utel" id="utel" placeholder="手机" maxlength="11">
             </div>
             <div class="input_big">
-                <input type="text" name="yzm" placeholder="验证码">
+                <input type="text" name="yzm" placeholder="图片验证码">
                 <span class="yzm_pic"></span>
+            </div>
+            <div class="input_big">
+                 <input type="text" name="yzm" placeholder="手机验证码" maxlength="4">
+                <span class="bui-btn primary-reverse mini ring" id="btnSend" style="height: 27px;position: absolute;top: 8px;right: 10px;">发送验证码</span>
             </div>
             <div class="input_big" style="padding:0 10px;">
                 <select>
