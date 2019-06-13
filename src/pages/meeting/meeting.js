@@ -5,6 +5,7 @@
  */
 loader.define(function(){
     bui.ready(function(){
+        var apiUrl="http://qxb.test.com/";
          //初始化配置参数      
         $('#demo').mobiscroll().calendar({
             lang: 'zh'          //使用语言
@@ -57,7 +58,7 @@ loader.define(function(){
         storage.set("token","2bc4bc9fcb24b2903d61e7b7921409d3");
        function getList(){
          // ajax请求
-        var apiUrl="";
+        
         var curDate=new Date();
         var year=curDate.getFullYear();
         var month=curDate.getMonth()+1;
@@ -105,7 +106,6 @@ loader.define(function(){
        });
         function getTime(index){
              // ajax请求
-            var apiUrl="";
             var curDate=new Date();
             var year=curDate.getFullYear();
             var month=curDate.getMonth()+1;
