@@ -81,10 +81,15 @@
 
 	.progress-bar {
 	    height: 7px;
-	    background: #f5dcca;
+	    background: #e2e2e2;
 	    margin: 10px 0 5px;
+	    overflow: hidden;
 	}
-
+	.progress-bar span{
+		float: left;
+		width: 3.125%;
+		height: 7px;
+	}
 	.progress-count {
 	    display: flex;
 	}
@@ -156,7 +161,11 @@
 	.ts-group label {
 	    display: block;
 	}
-
+	.ts-group label.disabled {
+	    display: block;
+	    color: #a1a1a1;
+    	text-decoration: line-through;
+	}
 	.ts-group input {
 	    vertical-align: -1px;
 	}
@@ -178,6 +187,7 @@
 	    color: #fff;
 	    border-radius: 3px;
 	}
+	.ts-btn.on{background: #00a7f5;}
 	.header-span{
 		background: #57b83e;
 		width: 85px;
@@ -209,6 +219,9 @@
 	.ts-head h1{
 		font-size: 16px;
 		margin-bottom: 8px;
+	}
+	.meeting-contain{
+		overflow: scroll;
 	}
  </style>
         <div class="bui-box back-white">
@@ -243,101 +256,228 @@
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">07:00-07:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">07:30-08:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">08:00-08:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">08:30-09:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">09:00-09:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">09:30-10:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">10:00-10:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">10:30-11:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">11:00-11:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">11:30-12:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">12:00-12:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">12:30-13:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">13:00-13:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">13:30-14:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">14:00-14:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">14:30-15:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">15:00-15:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">15:30-16:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">16:00-16:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">16:30-17:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">17:00-17:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">17:30-18:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">18:00-18:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">18:30-19:00</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">19:00-19:30</span>
+			<span class="ts-tag"></span>
+			</label>
+		</div>
+		<div class="ts-group">
+			<label>
+			<input type="checkbox" name="time">
+			<span class="ts-time">19:30-20:00</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
 			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">20:30-21:00</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">21:00-21:30</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">21:30-22:00</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">22:00-22:30</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
 		<div class="ts-group">
 			<label>
 			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
+			<span class="ts-time">22:30-23:00</span>
+			<span class="ts-tag"></span>
 			</label>
 		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
-		<div class="ts-group">
-			<label>
-			<input type="checkbox" name="time">
-			<span class="ts-time">20:00-20:30</span>
-			<span class="ts-tag">已过期</span>
-			</label>
-		</div>
+		
 	</div>
 	<div class="ts-submit">
 		<button class="ts-btn">立即预定</button>
