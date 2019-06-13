@@ -131,6 +131,7 @@ loader.define(function(){
                     if(v==1){
                         $('.ts-group').eq(i).find('input[type="checkbox"]').attr('disabled','true');
                         $('.ts-group').eq(i).find('label').addClass('disabled');
+                        $('.ts-group').eq(i).find('.ts-tag').html('已预订');
                     }
                 });
             });
