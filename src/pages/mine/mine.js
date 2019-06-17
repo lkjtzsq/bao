@@ -5,8 +5,8 @@
  */
 loader.define(function(){
     bui.ready(function(){
-        // var apiUrl="";       
-        var apiUrl="http://qxb.test.com/"; 
+        var apiUrl="";       
+        // var apiUrl="http://qxb.test.com/"; 
         $('.green-back').click(function(){
             bui.back();
         });

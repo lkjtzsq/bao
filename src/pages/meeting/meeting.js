@@ -6,8 +6,8 @@
 loader.define(function(){
     bui.ready(function(){
          //初始化配置参数   
-        // var apiUrl="";  
-        var apiUrl="http://qxb.test.com/"; 
+        var apiUrl="";  
+        // var apiUrl="http://qxb.test.com/"; 
         $('#demo').mobiscroll().calendar({
             lang: 'zh'          //使用语言
         });
@@ -114,9 +114,9 @@ loader.define(function(){
             var start_p=$('.time-content input[type="checkbox"]:checked').eq(0).parents('.ts-group').index();
             var end_p=$('.time-content input[type="checkbox"]:checked').eq(len-1).parents('.ts-group').index();
             console.log(start_p,end_p);
-            var inputArr=$('input[type="checkbox"]');
-            inputArr.slice(start_p,end_p+1).attr('checked','true');
-            inputArr.slice(start_p,end_p+1).siblings('.ts-time').css('color','red');
+            var inputArr=$('input[type="checkbox"]').not('[disabled]');
+            inputArr.slice(start_p,end_p+1).prop('checked','checked');
+            // inputArr.slice(start_p,end_p+1).siblings('.ts-time').css('color','red');
        });
         function getTime(index){
              // ajax请求

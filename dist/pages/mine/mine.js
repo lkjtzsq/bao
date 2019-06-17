@@ -1,1 +1,72 @@
-"use strict";loader.define(function(){bui.ready(function(){var a="http://qxb.test.com/";$(".green-back").click(function(){bui.back()}),$("body").on("click",".cancel",function(){var e=$(this).attr("data-id");bui.ajax({url:a+"api/meeting/cancel_book",data:{id:e,token:"2bc4bc9fcb24b2903d61e7b7921409d3"},needNative:!0}).then(function(a){window.location.reload()})}),function(e,c,n){bui.ajax({url:a+c,data:{token:"2bc4bc9fcb24b2903d61e7b7921409d3"},needNative:!0}).then(function(a){var a=a.data.data,c="";$(a).each(function(a,e){var i=e.id,t=e.name,s=e.status;switch(s){case-1:s="已结束";break;case 0:s="审核中";break;case"1":s="已预订";break;case 2:s="未通过";break;case 3:s="已撤销"}var d=e.theme,o=e.date+" "+e.start_time+"-"+e.end_time,b=e.address;c+='<div class="mine-item"><h1 class="mine-title"><i class="'+n+'"></i>'+t+'</h1><p class="mine-cr used">状态：<span>'+s+'</span></p><p class="mine-cr">主题：'+d+'</p><p class="mine-cr">时间：<span>'+o+'</span></p><p class="mine-cr">地点：<span>'+b+'</span></p><p class="mine-btn-cr"><a class="cancel" data-id="'+i+'">取消</a></p></div>'}),$(c).appendTo($(e))},function(a){console.log(a)})}("#mb1","api/meeting/my_book","icon1")})});
+"use strict";
+
+/**
+ * 注册模板,包含验证码倒计时及手机号简单验证
+ * 默认模块名: pages/register/register
+ * @return {[object]}  [ 返回一个对象 ]
+ */
+loader.define(function () {
+    bui.ready(function () {
+        var apiUrl = "";
+        // var apiUrl="http://qxb.test.com/"; 
+        $('.green-back').click(function () {
+            bui.back();
+        });
+        // ajax
+        function getList(ele, url, icon) {
+            bui.ajax({
+                url: apiUrl + url,
+                data: {
+                    "token": "2bc4bc9fcb24b2903d61e7b7921409d3"
+                },
+                needNative: true
+            }).then(function (data) {
+                var data = data.data.data;
+                var str = "";
+                $(data).each(function (i, v) {
+                    var id = v.id;
+                    var name = v.name;
+                    var status = v.status;
+                    switch (status) {
+                        case -1:
+                            status = "已结束";
+                            break;
+                        case 0:
+                            status = "审核中";
+                            break;
+                        case "1":
+                            status = "已预订";
+                            break;
+                        case 2:
+                            status = "未通过";
+                            break;
+                        case 3:
+                            status = "已撤销";
+                            break;
+                    }
+                    var theme = v.theme;
+                    var time = v.date + " " + v.start_time + "-" + v.end_time;
+                    var address = v.address;
+                    str += '<div class="mine-item"><h1 class="mine-title"><i class="' + icon + '"></i>' + name + '</h1><p class="mine-cr used">状态：<span>' + status + '</span></p><p class="mine-cr">主题：' + theme + '</p><p class="mine-cr">时间：<span>' + time + '</span></p><p class="mine-cr">地点：<span>' + address + '</span></p><p class="mine-btn-cr"><a class="cancel" data-id="' + id + '">取消</a></p></div>';
+                });
+                $(str).appendTo($(ele));
+            }, function (err) {
+                console.log(err);
+            });
+        }
+        $('body').on("click", '.cancel', function () {
+            var id = $(this).attr('data-id');
+            bui.ajax({
+                url: apiUrl + "api/meeting/cancel_book",
+                data: {
+                    id: id,
+                    "token": "2bc4bc9fcb24b2903d61e7b7921409d3"
+                },
+                needNative: true
+            }).then(function (data) {
+                window.location.reload();
+            });
+        });
+        getList("#mb1", "api/meeting/my_book", "icon1");
+    });
+});
