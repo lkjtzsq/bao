@@ -28,4 +28,5 @@ bui.ready(function() {
           router.load({ url: "pages/page2/page2.html", param: {} });
         })
     })
+    
 })
