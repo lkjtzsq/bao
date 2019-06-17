@@ -16,7 +16,8 @@ loader.define(function(){
                 url:apiUrl+url,
                 data:{
                     "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
-                }
+                },
+                 needNative:true
             }).then(function(data){
                 var data=data.data.data;
                 var str="";
@@ -58,7 +59,8 @@ loader.define(function(){
                 data:{
                     id:id,
                     "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
-                }
+                },
+                 needNative:true
             }).then(function(data){
                 window.location.reload();
             });

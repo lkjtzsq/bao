@@ -76,7 +76,8 @@ loader.define(function(){
             data:{
                 "date":date,
                 "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
-            }
+            },
+            needNative:true
         }).then(function(data){
             var data=data.data.data;
             var str='';
