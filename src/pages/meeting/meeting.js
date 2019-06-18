@@ -5,9 +5,12 @@
  */
 loader.define(function(){
     bui.ready(function(){
+        // storage 获取 token
+        var storage=bui.storage();
+        var token=storage.get("token")[0];
          //初始化配置参数   
-        var apiUrl="";  
-        // var apiUrl="http://qxb.test.com/"; 
+        // var apiUrl="";  
+        var apiUrl="http://qxbyd.cyol.com/"; 
         $('#demo').mobiscroll().calendar({
             lang: 'zh'          //使用语言
         });
@@ -16,18 +19,13 @@ loader.define(function(){
         var day=new Date().getDate();
         $('#demo').val(year+'/'+month+'/'+day);
         var _windowH=$(window).height();
-        $('.time-content').height(_windowH*0.8-129-61);
+        $('.time-content').height(_windowH*0.8-129-61-10-5);
         $('.green-back').click(function(){
             bui.back();
         });
         $('.mine').click(function(){
             router.load({ url: "pages/mine/mine.html", param: {} });
         });
-        var meetingArr=[
-            {"title":"小厨大会议室","desc":"投影 / 电视 / 白版","count":"20-50人","addr":"中青大厦"},
-            {"title":"小厨小会议室","desc":"暂无相关设备","count":"10人以下","addr":"中青大厦"},
-            {"title":"文化会客厅","desc":"暂无相关设备","count":"10人以下","addr":"中青大厦"}
-        ];
         $('body').on("click",".meeting-item",function(){
             $('#theme').val("");
             var index=$(this).index();
@@ -58,9 +56,6 @@ loader.define(function(){
             $('.view-pic-bg').hide();
         })
         $('.meeting-contain').height($(window).height()-123);
-        // 虚拟storage
-        var storage=bui.storage();
-        storage.set("token","2bc4bc9fcb24b2903d61e7b7921409d3");
        function getList(){
          // ajax请求
         
@@ -75,7 +70,7 @@ loader.define(function(){
             type:"get",
             data:{
                 "date":date,
-                "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
+                "token":token
             },
             needNative:true
         }).then(function(data){
@@ -104,20 +99,30 @@ loader.define(function(){
        }
        getList();
        $('.ts-group input').change(function(){
+            var inputArr=$('.time-content input[type="checkbox"]').not('[disabled]');
+            var len=$('.time-content input[type="checkbox"]:checked').length;
+            var checkArr=$('.time-content input.on');
+            console.log('--------------')
+            console.log(checkArr);
+            var start_p=$('.time-content input[type="checkbox"]:checked').eq(0).parents('.ts-group').index();
+            var end_p=$('.time-content input[type="checkbox"]:checked').eq(len-1).parents('.ts-group').index();
             var inputCheckedLen=$('.ts-group input:checked').length;
+            var step=Math.ceil(inputCheckedLen/2);
+            console.log("step:"+step);
+            console.log(start_p,end_p);
+          if(!$(this).hasClass('on')){
             if(inputCheckedLen>0){
                 $('.ts-btn').addClass('on');
             }else{
                 $('.ts-btn').removeClass('on');
             }
-            var len=$('.time-content input[type="checkbox"]:checked').length;
-            var start_p=$('.time-content input[type="checkbox"]:checked').eq(0).parents('.ts-group').index();
-            var end_p=$('.time-content input[type="checkbox"]:checked').eq(len-1).parents('.ts-group').index();
-            console.log(start_p,end_p);
-            var inputArr=$('input[type="checkbox"]').not('[disabled]');
-            inputArr.slice(start_p,end_p+1).prop('checked','checked');
-            // inputArr.slice(start_p,end_p+1).siblings('.ts-time').css('color','red');
+            inputArr.slice(start_p,end_p+1).prop('checked','checked').addClass('on');
+          }else{
+            $(this).removeClass('on');
+            
+          }
        });
+
         function getTime(index){
              // ajax请求
             var curDate=new Date();
@@ -134,7 +139,7 @@ loader.define(function(){
                 type:"get",
                 data:{
                     "date":date,
-                    "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
+                    "token":token
                 }
             }).then(function(data){
                 console.log(data);
@@ -161,13 +166,13 @@ loader.define(function(){
             var len=$('.time-content input[type="checkbox"]:checked').length;
             var start_p=$('.time-content input[type="checkbox"]:checked').eq(0).parents('.ts-group').index()+1;
             var end_p=$('.time-content input[type="checkbox"]:checked').eq(len-1).parents('.ts-group').index()+1;
-            console.log(start_p,end_p);
+            // console.log(start_p,end_p);
             var theme=$('#theme').val();
             if(theme!==""){
                 bui.ajax({
                 url:apiUrl+"api/meeting/meeting_book",
                 data:{
-                    token:"2bc4bc9fcb24b2903d61e7b7921409d3",
+                    token:token,
                     mid:$('.time-chose').attr('data-id'),
                     date:$('#demo').val().replace(/\//g,"-"),
                     start_p:start_p,

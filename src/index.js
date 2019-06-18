@@ -1,16 +1,26 @@
-window.router = bui.router();
+window.loader = bui.loader({
+    cache: false
+})
+window.router = bui.router({});
 
 bui.ready(function() {
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete") {
+            document.body.style.display = "block";
+        } else {
+            document.body.style.display = "none";
+        };
+    };
     // 初始化路由
     router.init({
         id: "#bui-router",
         progress: true,
-        hash: true,
+        hash: true
     })
 
     // 绑定事件
     bind();
-
+    // $_SESSION['cyol_orderment'] = array('wx_open_id'=>$openid);
     // 事件类定义
     function bind() {
         // 绑定页面的所有按钮有href跳转

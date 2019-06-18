@@ -5,8 +5,11 @@
  */
 loader.define(function(){
     bui.ready(function(){
-        var apiUrl="";       
-        // var apiUrl="http://qxb.test.com/"; 
+        // storage 获取 token
+        var storage=bui.storage();
+        var token=storage.get("token")[0];
+        // var apiUrl="";       
+        var apiUrl="http://qxbyd.cyol.com/"; 
         $('.green-back').click(function(){
             bui.back();
         });
@@ -15,7 +18,7 @@ loader.define(function(){
             bui.ajax({
                 url:apiUrl+url,
                 data:{
-                    "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
+                    "token":token
                 },
                  needNative:true
             }).then(function(data){
@@ -26,19 +29,19 @@ loader.define(function(){
                     var name=v.name;
                     var status=v.status;
                     switch(status){
-                        case -1:
+                        case "-1":
                             status="已结束";
                             break;
-                        case 0:
+                        case "0":
                             status="审核中";
                             break;
                         case "1":
                             status="已预订";
                             break;
-                        case 2:
+                        case "2":
                             status="未通过";
                             break;
-                        case 3:
+                        case "3":
                             status="已撤销";
                             break;
                     }
@@ -58,7 +61,7 @@ loader.define(function(){
                 url:apiUrl+"api/meeting/cancel_book",
                 data:{
                     id:id,
-                    "token":"2bc4bc9fcb24b2903d61e7b7921409d3"
+                    "token":token
                 },
                  needNative:true
             }).then(function(data){

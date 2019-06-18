@@ -62,36 +62,31 @@
      <div class="login">
         <img class="login-logo" src="./images/bao_logo.png">
         <h1 class="login-txt">欢迎来到青小豹预约平台</h1>
-        <form>
             <div class="input_group">
                 <label for="uname"><i class="people"></i></label>
-                <input type="text" name="uname" id="uname" placeholder="姓名">
+                <input type="text" id="uname" placeholder="姓名" required="required">
             </div>
              <div class="input_group">
                 <label for="utel"><i class="tel"></i></label>
-                <input type="number" name="utel" id="utel" placeholder="手机" maxlength="11">
+                <input type="tel" id="utel" placeholder="手机" pattern="^1[0-9]{10}" required="required">
             </div>
+          
             <div class="input_big">
-                <input type="text" name="yzm" placeholder="图片验证码">
-                <span class="yzm_pic"></span>
-            </div>
-            <div class="input_big">
-                 <input type="text" name="yzm" placeholder="手机验证码" maxlength="4">
+                <input type="text"  placeholder="手机验证码" maxlength="4" required="required" id="code">
                 <span class="bui-btn primary-reverse mini ring" id="btnSend" style="height: 27px;position: absolute;top: 8px;right: 10px;">发送验证码</span>
             </div>
-            <div class="input_big" style="padding:0 10px;">
-                <select>
-                    <option>部门</option>
-                    <option>技术部</option>
-                    <option>视频部</option>
-                    <option>设计部</option>
+            <div class="input_big" style="padding:0 10px;" required="required">
+                <select  id="region">
+                    <option value="0">请选择公司</option>
+                    <option value="1">中青在线</option>
+                    <option value="2">中青网</option>
+                    <option value="3">影视中心</option>
                 </select>
             </div>
             <div class="input_big">
-                <input type="text" name="department" style="padding: 0 13px;">
+                <input type="text" style="padding: 0 13px;" id="duty">
             </div>
             <button id="login_submit">登 录</button>
-        </form>
     </div>
    </div>
 </div>

@@ -14,7 +14,7 @@
   ],
   "proxy": {
     "/api": {
-      "target": "http://qxb.test.com",
+      "target": "http://qxbyd.cyol.com",
       "changeOrigin": true,
       "ssl": false
     }
