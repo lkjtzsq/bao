@@ -28,7 +28,7 @@ loader.define(function(){
         $('.mine').click(function(){
             router.load({ url: "pages/mine/mine.html", param: {} });
         });
-        $('body').on("click",".meeting-item",function(){
+        $('body').on("click",".meeting-item",function(did){
             $('#theme').val("");
             var index=$(this).index();
             var dataId=$(this).attr("data-id");
@@ -37,7 +37,8 @@ loader.define(function(){
             $('.ts-count span').html($(this).find('.p2').html());
             $('.time-chose-bg,.time-chose').show();
             $('.time-chose').attr('data-id',dataId);
-            getTime(index);
+            did=dataId;
+            getTime(did);
         })
         $('.time-chose-bg').click(function(){
             $(this).hide();
@@ -57,7 +58,6 @@ loader.define(function(){
             $(this).hide();
             $('.view-pic-bg').hide();
         })
-        31+40+50
         $('.meeting-contain').height($(window).height()-123-8-54);
        function getList(){
          // ajax请求
@@ -102,12 +102,16 @@ loader.define(function(){
             });
            
             $(str1).appendTo($('.mc1'));            
-            $(str2).appendTo($('.mc2'));   
-            timeOVer();  
+            $(str2).appendTo($('.mc2'));  
+            $('.meeting-item').each(function(i,v){
+                var did = $(this).attr('data-id');
+                getTime(did);
+            }) 
         });
        }
        getList();
        $('.ts-group input').change(function(){
+            var _this=$(this);
             var inputArr=$('.time-content input[type="checkbox"]');
             var len=$('.time-content input[type="checkbox"]:checked').length;
             var checkArr=$('.time-content input.on');
@@ -126,21 +130,47 @@ loader.define(function(){
             }
           if(!$(this).hasClass('on')){
             inputArr.slice(start_p,end_p+1).not('[disabled]').prop('checked','checked').addClass('on');
-            console.log($(inputArr).slice(start_p,end_p+1));
-            $(inputArr).slice(start_p,end_p+1).each(function(i,v){
+            inputArr.slice(start_p,end_p+1).each(function(i,v){
                 if($(v).attr('disabled')){
-                    console.log('进来:'+i)
-                    $(inputArr).slice(start_p,end_p+1).slice(0,i).prop('checked',false).removeAttr
-                    ('on');
+                     $(inputArr).prop('checked',false).removeClass('on');
                 }
             });
+            // console.log($(inputArr).slice(start_p,end_p+1));
+            // $(inputArr).slice(start_p,end_p+1).each(function(i,v){
+            //     if($(v).attr('disabled')){
+            //         console.log('进来:'+i)
+            //         $(inputArr).slice(start_p,end_p+1).slice(0,i).prop('checked',false).removeAttr
+            //         ('on');
+            //     }
+            // });
           }else{
+            console.log("取消事件");
             $(this).removeClass('on');
-            
+            console.log('step:'+step);
+            inputArr.slice(start_p,end_p+1).each(function(i,v){
+                console.log(i);
+                console.log("---------------");
+                console.log(_this.siblings('.ts-time').html());
+                console.log("---------------");
+                console.log($(v).siblings('.ts-time').html());
+                if(_this.siblings('.ts-time').html()==$(v).siblings('.ts-time').html()){
+                    if(i<step){
+                        console.log("取消上半区");
+                        $(inputArr).slice(start_p,end_p+1).slice(0,i).prop('checked',false).removeClass
+                        ('on');
+                    }else{
+                        console.log("取消下半区");
+                        console.log( $(inputArr).slice(start_p,end_p+1));
+                        $(inputArr).slice(start_p,end_p+1).slice(i,inputCheckedLen+1).prop('checked',false).removeClass
+                        ('on');
+                    }
+                }
+                
+            });
           }
        });
 
-        function getTime(index){
+        function getTime(did){
              // ajax请求
             $('.ts-group').find('input[type="checkbox"]').removeAttr("checked");
             // $('.ts-group').find('label').removeClass('disabled');
@@ -155,42 +185,41 @@ loader.define(function(){
                 }
             }).then(function(data){
                 // console.log(data);
-                var books=data.data.data[index].books;
-                // console.log(books);
-                
-                $(books).each(function(i,v){
-                    if(v==1){
-                        $('.ts-group').eq(i).find('input[type="checkbox"]').attr('disabled','true');
-                        $('.ts-group').eq(i).find('label').addClass('disabled');
-                        $('.ts-group').eq(i).find('.ts-tag').html('已预订');
-                    }else{
-                         $('.ts-group').eq(i).find('input[type="checkbox"]').removeAttr('disabled');
-                        $('.ts-group').eq(i).find('label').removeClass('disabled');
-                        $('.ts-group').eq(i).find('.ts-tag').html('');
+                $(data.data.data).each(function(i,v){
+                    if(v.id==did){
+                        $(v.books).each(function(j,z){
+                            if(z==1){
+                                $('.ts-group').eq(j).find('input[type="checkbox"]').attr('disabled','true');
+                                $('.ts-group').eq(j).find('label').addClass('disabled');
+                                $('.ts-group').eq(j).find('.ts-tag').html('已预订');
+                            }else{
+                                $('.ts-group').eq(j).find('input[type="checkbox"]').removeAttr('disabled');
+                                $('.ts-group').eq(j).find('label').removeClass('disabled');
+                                $('.ts-group').eq(j).find('.ts-tag').html('');
+                            }
+                            var oclock=$('.ts-group').eq(j).find('.ts-time').html().split('-')[1];
+                            var tsTime=$('#demo').val()+' '+oclock;
+                            var ttSeconds=new Date(tsTime).getTime();
+                            var curSeconds=new Date().getTime();
+                            if(ttSeconds<curSeconds){
+                                $('.ts-group').eq(j).find('input[type="checkbox"]').attr('disabled','true');
+                                $('.ts-group').eq(j).find('label').addClass('disabled');
+                                $('.ts-group').eq(j).find('.ts-tag').html('已过期');
+                                $('.meeting-item[data-id='+did+']').find('.progress-bar span').eq(j).css('background','#e2e2e2')  
+                            }
+                        });
                     }
                 });
-                timeOVer(index);
                 
             });
        }
-       function timeOVer(index){
-            $('.ts-group').each(function(i,v){
-                var oclock=$(this).find('.ts-time').html().split('-')[1];
-                var tsTime=$('#demo').val()+' '+oclock;
-                var ttSeconds=new Date(tsTime).getTime();
-                var curSeconds=new Date().getTime();
-                if(ttSeconds<curSeconds){
-                    $('.ts-group').eq(i).find('input[type="checkbox"]').attr('disabled','true');
-                    $('.ts-group').eq(i).find('label').addClass('disabled');
-                    $('.ts-group').eq(i).find('.ts-tag').html('已过期');
-                    $('.meeting-item').each(function(j,z){
-                      $(this).find('.progress-bar span').eq(i).css('background','#e2e2e2')  
-                    });
-                }
-            });
-       }
+       
        //会议室提交
        var timeoutflag = null;
+       $('#theme').blur(function(){
+                var scrollTop=$('.time-content').scrollTop();
+                $('body').scrollTop(scrollTop+1);
+            });
        $('body').off('click','.ts-btn.on').on("click",".ts-btn.on",function(){
           if(timeoutflag != null){
             clearTimeout(timeoutflag);
@@ -202,6 +231,7 @@ loader.define(function(){
             var end_p=$('.time-content input[type="checkbox"]:checked').eq(len-1).parents('.ts-group').index()+1;
             // console.log(start_p,end_p);
             var theme=$('#theme').val();
+
             if(theme == ""){
                 alert("会议主题不能为空！");
             }
