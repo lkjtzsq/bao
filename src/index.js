@@ -2,8 +2,16 @@ window.loader = bui.loader({
     cache: false
 })
 window.router = bui.router({});
-
+// var apiUrl="";  
+var apiUrl="http://qxbyd.cyol.com/"; 
 bui.ready(function() {
+    $(document).delegate('input, textarea, select', 'blur', function(){
+       setTimeout(function(){
+           $('html').animate({height: '100.1vh'}, 100, function(){
+                 $(this).animate({height: '100vh'}, 1)
+           })
+       },100);
+    });
     document.onreadystatechange = function () {
         if (document.readyState == "complete") {
             document.body.style.display = "block";

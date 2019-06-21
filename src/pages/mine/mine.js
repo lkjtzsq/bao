@@ -8,10 +8,13 @@ loader.define(function(){
         // storage 获取 token
         var storage=bui.storage();
         var token=storage.get("token")[0];
-        // var apiUrl="";       
-        var apiUrl="http://qxbyd.cyol.com/"; 
         $('.green-back').click(function(){
-            bui.back();
+            router.back({
+                callback:function(){
+                    // $('.meeting-contain').html("");
+                    // router.refresh();
+                }
+            });
         });
         // ajax
         function getList(ele,url,icon){
@@ -22,6 +25,7 @@ loader.define(function(){
                 },
                  needNative:true
             }).then(function(data){
+                $(ele).html("");
                 var data=data.data.data;
                 var str="";
                 $(data).each(function(i,v){
@@ -57,17 +61,22 @@ loader.define(function(){
         }
         $('body').on("click",'.cancel',function(){
             var id=$(this).attr('data-id');
-            bui.ajax({
-                url:apiUrl+"api/meeting/cancel_book",
-                data:{
-                    id:id,
-                    "token":token
-                },
-                 needNative:true
-            }).then(function(data){
-                window.location.reload();
-            });
+            setTimeout(function(){
+                getMine(id);
+            },500);
         })
+        function getMine(id){
+            bui.ajax({
+            url:apiUrl+"api/meeting/cancel_book",
+            data:{
+                id:id,
+                "token":token
+            },
+            needNative:true
+            }).then(function(data){
+                getList("#mb1","api/meeting/my_book","icon1");
+            });
+        }
         getList("#mb1","api/meeting/my_book","icon1");
     });
 })

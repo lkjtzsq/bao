@@ -10,7 +10,6 @@ loader.define(function(){
     
     var pageview = {};
     pageview.init = function () {
-        var apiUrl="http://qxbyd.cyol.com/"; 
         var params = router.getPageParams();
         console.log(params)
       $('#login_submit').click(function(){
@@ -48,6 +47,9 @@ loader.define(function(){
                 storage.set("token",data.data.token);
                 router.load({ url: "pages/main/main.html", param: {wx_open_id:params.wx_open_id} });
               }
+              if(data.msg=="验证码错误"){
+                bui.hint("验证码错误");
+              }
             },function(err){
               console.log(err);
             });
@@ -68,11 +70,24 @@ loader.define(function(){
       });
 
       $btnSend.on("click", function(argument) {
-          var hasDisabled = $(this).hasClass("disabled");
-          if (!hasDisabled) {
-              $(this).addClass("disabled")
-              bui.hint("验证码发送成功")
-              timer.restart();
+          if(/^1[0-9]{10}/.test($('#utel').val())){
+            var hasDisabled = $(this).hasClass("disabled");
+            if (!hasDisabled) {
+                $(this).addClass("disabled");
+                bui.hint("验证码发送成功");
+                timer.restart();
+            }
+            console.log($('#utel').val());
+            bui.ajax({
+              url:apiUrl+"api/send_sms",
+              data:{
+                telephone:$('#utel').val()
+              }
+            }).then(function(data){
+              console.log(data);
+            });
+          }else{
+            bui.hint("手机号格式不正确！");
           }
       })
     }

@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>码上飘</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+      var timeoutflag = null;
+      $('#btnBind').click(function() {
+        if(timeoutflag != null){
+          clearTimeout(timeoutflag);
+        }
+ 
+          timeoutflag=setTimeout(function(){
+            dosomething();//此处是一个会请求远程的ajax 异步操作;
+          },500);
+         
+      });
+  
+     function dosomething(){
+        console.log(1);
+    }
+    });
+
+    </script>
+</head>
+<body>
+<input id="btn1" type="button"  value="确认" />
+<input id="btnBind" type="button" value="绑定按钮" />
+</body>
+</html>
